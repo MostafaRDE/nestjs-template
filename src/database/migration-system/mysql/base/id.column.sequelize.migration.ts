@@ -6,6 +6,6 @@ export const IdColumnSequelizeMigrationKey = {
 
 export const ForeignColumnSequelizeMigrationKey = (tableName: string, options?: { targetKey?: string, allowNull?: boolean }) => ({
     type: Sequelize.BIGINT({ unsigned: true }),
-    allowNull: Reflect.has(options || {}, 'allowNull') && options.allowNull,
+    allowNull: Reflect.has(options || {}, 'allowNull') && options?.allowNull || false,
     references: { key: options?.targetKey || 'id', model: tableName },
 } as ModelAttributeColumnOptions)

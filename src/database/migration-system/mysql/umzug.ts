@@ -20,7 +20,7 @@ const configService = new ConfigService({ database: { mysql: {
 const sequelize = new Sequelize({
     dialect: 'mysql',
     host: configService.get('database.mysql.host'),
-    port: +configService.get<number>('database.mysql.port'),
+    port: +(configService.get<number>('database.mysql.port') || 3306),
     username: configService.get('database.mysql.username'),
     password: configService.get('database.mysql.password'),
     database: configService.get('database.mysql.database'),

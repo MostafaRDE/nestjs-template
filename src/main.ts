@@ -25,7 +25,7 @@ async function bootstrap()
     const authenticationGuard = app.get(AuthenticationGuard)
     app.useGlobalGuards(authenticationGuard)
 
-    await app.listen(+process.env.APP_PORT || 3000, process.env.APP_HOST || 'localhost')
+    await app.listen(+(process.env.APP_PORT || 3000), process.env.APP_HOST || 'localhost')
 
     // Listen to shutdown message from PM2 or other parent processes
     pm2ShutdownMessage()

@@ -2,6 +2,7 @@ import { AfterAll, BeforeAll } from '@cucumber/cucumber'
 import { NestExpressApplication } from '@nestjs/platform-express'
 import { Test } from '@nestjs/testing'
 import { AppModule } from '../../../src/app.module'
+import { appInitializer } from '../../../src/app/app.initializer'
 
 export let app: NestExpressApplication
 
@@ -19,6 +20,7 @@ BeforeAll(async () =>
             }).compile()
 
             app = moduleReference.createNestApplication<NestExpressApplication>()
+            appInitializer(app)
             await app.init()
         }
     }
